@@ -1,4 +1,5 @@
 class FacturasController < ApplicationController
+	before_action :authorize
   before_action :set_factura, :set_clientes, only: [:show, :edit, :update, :destroy]
 
   # GET /facturas

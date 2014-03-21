@@ -47,3 +47,5 @@ end
 gem 'prawn'
 
 gem 'cocoon'
+
+gem 'bcrypt-ruby'

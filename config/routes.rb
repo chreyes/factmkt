@@ -1,4 +1,11 @@
 Fact5::Application.routes.draw do
+
+	get 'registro', to: 'usuarios#new', as: 'registro'
+	get 'login', to: 'sessions#new', as: 'login'
+	get 'logout', to: 'sessions#destroy', as: 'logout'
+  resources :sessions
+  resources :usuarios
+
   resources :items
 
   resources :facturas
@@ -9,7 +16,7 @@ Fact5::Application.routes.draw do
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
-  # root 'welcome#index'
+   root 'facturas#index'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
