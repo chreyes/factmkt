@@ -1,0 +1,14 @@
+<%= javascript_include_tag params[:controller] %>
+
+<div class="nested-fields" id="nested-f">
+	<%= f.label "Cantidad" %>
+	<%= f.text_field :cantidad %>
+
+	<%= f.label "Detalle" %>
+	<%= f.text_field :detalle %>
+
+	<%= f.label "Precio" %>
+	<%= f.text_field :precio%>
+
+	<%= link_to_remove_association "Borrar item", f %>
+</div>

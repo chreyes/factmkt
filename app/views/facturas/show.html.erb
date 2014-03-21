@@ -1,0 +1,61 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Numero:</strong>
+  <%= @factura.numero %>
+  </p>
+
+<p>
+  <strong>Cliente:</strong>
+  <%= @factura.cliente.nombre %>
+</p>
+
+
+<p>
+  <strong>Fecha:</strong>
+  <%= @factura.fecha %>
+</p>
+
+
+<table>
+  <thead>
+    <tr>
+      <th>Cantidad</th>
+      <th>Detalle</th>
+      <th>Precio</th>
+      <th>Total</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @items.each do |item| %>
+      <tr>
+        <td><%= item.cantidad %></td>
+        <td><%= item.detalle %></td>
+        <td><%= formato(item.precio) %></td>
+        <td><%= formato(item.total) %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<p>
+  <strong>Neto:</strong>
+  <%= formato(@factura.neto) %>
+</p>
+
+<p>
+  <strong>Iva:</strong>
+  <%= formato(@factura.iva.round) %>
+</p>
+
+<p>
+  <strong>Total:</strong>
+  <%= formato(@factura.total.round) %>
+</p>
+
+<br>
+
+<%= link_to "PDF", factura_path(@factura, format: "pdf") %>
+<%= link_to 'Edit', edit_factura_path(@factura) %> |
+<%= link_to 'Back', facturas_path %>
