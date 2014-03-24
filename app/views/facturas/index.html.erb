@@ -1,4 +1,6 @@
-<h1>Listing facturas</h1>
+<h3>Listado facturas</h3>
+
+<%= link_to 'Nueva Factura', new_factura_path, class: "button small radius", "data-no-turbolink" => true %>
 
 <table>
   <thead>
@@ -16,11 +18,11 @@
     <% @facturas.each do |factura| %>
       <tr>
         <td><%= link_to factura.numero, factura %></td>
-        <td><%= factura.fecha %></td>
+        <td><%= factura.fecha.strftime("%d/%m/%Y") %></td>
         <td><%= factura.cliente.nombre %></td>
         <td><%= formato(factura.total.round) %></td>
-        <td><%= link_to 'Editar', edit_factura_path(factura) %></td>
-        <td><%= link_to 'Borrar', factura, method: :delete, data: { confirm: 'Esta seguro de borrar la factura?' } %></td>
+	<td><%= link_to 'Editar', edit_factura_path(factura), class: "button tiny radius success", "data-no-turbolink" => true %></td>
+	<td><%= link_to 'Anular', factura, method: :delete, data: { confirm: 'Esta seguro de borrar la factura?' }, class: "button alert tiny radius"  %></td>
       </tr>
     <% end %>
   </tbody>
@@ -28,4 +30,3 @@
 
 <br>
 
-<%= link_to 'New Factura', new_factura_path %>

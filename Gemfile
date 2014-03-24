@@ -49,3 +49,7 @@ gem 'prawn'
 gem 'cocoon'
 
 gem 'bcrypt-ruby'
+
+gem 'foundation-rails'
+
+gem 'angularjs-rails'

@@ -41,7 +41,7 @@ class FacturasController < ApplicationController
 
     respond_to do |format|
       if @factura.save
-        format.html { redirect_to facturas_url, notice: 'Factura was successfully created.' }
+        format.html { redirect_to @factura, notice: 'Factura registrada exitosamente.' }
         format.json { render action: 'show', status: :created, location: @factura }
       else
         format.html { render action: 'new' }
@@ -55,7 +55,7 @@ class FacturasController < ApplicationController
   def update
     respond_to do |format|
       if @factura.update(factura_params)
-        format.html { redirect_to facturas_url, notice: 'Factura was successfully updated.' }
+        format.html { redirect_to facturas_url, notice: 'Factura editada exitosamente.' }
         format.json { head :no_content }
       else
         format.html { render action: 'edit' }

@@ -1,22 +1,44 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Numero:</strong>
-  <%= @factura.numero %>
-  </p>
+<%= link_to 'Volver', facturas_path, class: "button small secondary" %>
+<%= link_to "Imprimir", factura_path(@factura, format: "pdf"), class: "button small alert" %>
 
-<p>
-  <strong>Cliente:</strong>
-  <%= @factura.cliente.nombre %>
-</p>
+<div class="row">
+	<div class="small-2 columns">
+		<div class="row">
+			<div class="small-6 columns">
+				Numero:
+			</div>
+			<div class="small-6 columns">
+				<strong><%= @factura.numero %></strong>
+			</div>
+		</div>
+	</div>
 
+	<div class="small-6 columns">
+		<div class="row">
+			<div class="small-2 columns">
+				Cliente:
+			</div>
+			<div class="small-10 columns">
+				<strong><%= @factura.cliente.nombre %></strong>
+			</div>
+		</div>
+	</div>
 
-<p>
-  <strong>Fecha:</strong>
-  <%= @factura.fecha %>
-</p>
+	<div class="small-2 columns">
+		<div class="row">
+			<div class="small-6 columns">
+				Fecha:
+			</div>
 
-
+			<div class="small-6 columns">
+				<strong><%= @factura.fecha.strftime("%d/%m/%Y") %></strong>
+			</div>
+		</div>
+	</div>
+</div>
+<br />
 <table>
   <thead>
     <tr>
@@ -39,23 +61,45 @@
   </tbody>
 </table>
 
-<p>
-  <strong>Neto:</strong>
-  <%= formato(@factura.neto) %>
-</p>
+	<div class="row">
+		<div class="small-8 columns">
+		</div>
 
-<p>
-  <strong>Iva:</strong>
-  <%= formato(@factura.iva.round) %>
-</p>
+		<div class="small-4 columns">
+			<div class="small-8 columns">
+				<strong>Neto:</strong>
+			</div>
+			<div class="small-4 columns">
+				<%= formato(@factura.neto.round) %>
+			</div>
+		</div>
+	</div>
 
-<p>
-  <strong>Total:</strong>
-  <%= formato(@factura.total.round) %>
-</p>
 
-<br>
+	<div class="row">
+		<div class="small-8 columns">
+		</div>
 
-<%= link_to "PDF", factura_path(@factura, format: "pdf") %>
-<%= link_to 'Edit', edit_factura_path(@factura) %> |
-<%= link_to 'Back', facturas_path %>
+		<div class="small-4 columns">
+			<div class="small-8 columns">
+				<strong>Iva:</strong>
+			</div>
+			<div class="small-4 columns">
+				<%= formato(@factura.iva.round) %>
+			</div>
+		</div>
+	</div>
+
+	<div class="row">
+		<div class="small-8 columns">
+		</div>
+
+		<div class="small-4 columns">
+			<div class="small-8 columns">
+				<strong>Total:</strong>
+			</div>
+			<div class="small-4 columns">
+				<%= formato(@factura.total.round) %>
+			</div>
+		</div>
+	</div>

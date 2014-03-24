@@ -1,5 +1,5 @@
 module ApplicationHelper
 	def formato(numero)
-		number_with_delimiter(numero, delimiter: ".")
+		number_to_currency(numero, delimiter: ".", precision: 0)
 	end
 end

@@ -1,3 +1,5 @@
+<%= javascript_include_tag params[:controller] %>
+
 <%= form_for(@factura) do |f| %>
   <% if @factura.errors.any? %>
     <div id="error_explanation">
@@ -10,29 +12,99 @@
       </ul>
     </div>
   <% end %>
+  <div class="row">
+	  <div class="small-2 columns">
+		  <%= f.label :numero %>
+		  <%= f.text_field :numero %>
+	  </div>
+	  
+	  <div class="small-6 columns">
+		  <%= f.label :cliente %>
+		  <%= f.collection_select :cliente_id, @clientes, :id, :nombre %>
+	  </div>
 
-  <div class="field">
-    <%= f.label :numero %><br>
-    <%= f.text_field :numero %>
-  </div>
-  <div class="field">
-    <%= f.label :cliente %><br>
-    <%= f.collection_select :cliente_id, @clientes, :id, :nombre %>
-  </div>
-  <div class="field">
-    <%= f.label :fecha %><br>
-    <%= f.date_select :fecha %>
-  </div>
-  <div id="items">
-	  <%= f.fields_for :items do |item| %>
-		  <%= render 'item_fields', :f => item %>
-	  <% end %>
-
-  <div class="field">
-			  <%= link_to_add_association 'Agregar item', f, :items %>
+	  <div class="small-4 columns">
+		  <%= f.label :fecha %>
+		  <%= f.date_field :fecha, :value => Date.today %>
+	  </div>
   </div>
 
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+	<div class="row">
+		<div class="small-2 columns">
+			<%= f.label "Cantidad" %>
+		</div>
+
+		<div class="small-4 columns">
+			<%= f.label "Detalle" %>
+		</div>
+
+		<div class="small-4 columns">
+			<%= f.label "Precio" %>
+		</div>
+
+	</div>
+
+
+	<div id="items">
+		<%= f.fields_for :items do |item| %>
+			<%= render 'item_fields', :f => item %>
+		<% end %>
+		<%= link_to_add_association 'Agregar item', f, :items, class: "button tiny success radius" %>
+	</div>
+
+
+	<div class="row">
+		<div class="small-8 columns">
+			<%= content_tag :h3, " " %>
+		</div>
+
+		<div class="small-2 columns">
+			Neto:
+		</div>
+		<div class="small-2 columns">
+			<%= formato(@factura.neto.round) %>
+		</div>
+	</div>
+
+	<div class="row">
+		<div class="small-8 columns">
+			<%= content_tag :h3, " " %>
+		</div>
+
+		<div class="small-2 columns">
+			Iva:
+		</div>
+		<div class="small-2 columns">
+			<%= formato(@factura.iva.round) %>
+		</div>
+	</div>
+
+	<div class="row">
+		<div class="small-8 columns">
+			<%= content_tag :h3, " " %>
+		</div>
+
+		<div class="small-2 columns">
+			Total:
+		</div>
+		<div class="small-2 columns">
+			<%= formato(@factura.total.round) %>
+		</div>
+	</div>
+
+	<div class="row">
+		<div class="small-2 columns">
+			<%= content_tag :h3, " " %>
+		</div>
+		
+	</div>
+
+	<div class="row">
+		<div class="small-6 columns">
+		</div>
+		<div class="small-3 columns">
+			<%= f.submit "Guardar factura", class: "button small radius" %>
+		</div>
+	</div>
 <% end %>
+

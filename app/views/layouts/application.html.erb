@@ -1,27 +1,56 @@
 <!DOCTYPE html>
-<html>
-<head>
-  <title>Fact5</title>
-  <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
-  <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
-  <%= csrf_meta_tags %>
-</head>
-<body>
-<% if current_usuario %>
-	<%= link_to "Facturas", facturas_url %>
-	<%= link_to "Clientes", clientes_url %>
-	<%= link_to "Nuevo usuario", registro_path %>
-	Logeado como : <%= current_usuario.email %>
-	<%= link_to "Salir", logout_path %>
-<% else %>
-	<%= link_to "Login", login_path %>
-<% end %>
+<html lang="en" ng-app>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-<% flash.each do |name, msg| %>
-	<%= content_tag :div, msg, id: "flash_#{name}" %>
-<% end %>
+    <title><%= content_for?(:title) ? yield(:title) : "foundation-rails" %></title>
 
-<%= yield %>
+    <%= stylesheet_link_tag    "application" %>
+    <%= javascript_include_tag "vendor/modernizr" %>
+    <%= javascript_include_tag :cocoon %>
+    <%= csrf_meta_tags %>
+  </head>
 
-</body>
+  <body>
+	<nav class="top-bar">
+	  <ul class="title-area">
+	    <li class="name">
+	      <h1><%= link_to "ImpFacturas", root_url %></a></h1>
+	    </li>
+	  </ul>
+	  <section class="top-bar-section">
+		  <% if current_usuario %>
+	    <ul class="right">
+	      <li class="divider"></li>
+	      <li><%= link_to "Facturas", facturas_url %></li>
+	      <li class="divider"></li>
+	      <li><%= link_to "Clientes", clientes_url %></li>
+	      <li class="divider"></li>
+	      <li><%= link_to "Usuarios", registro_path %></li>
+	      <li class="divider"></li>
+	      <li><%= link_to current_usuario.email, '' %></li>
+	      <li class="divider"></li>
+	      <li><%= link_to "Salir", logout_path %></li>
+	    </ul>
+		  <% end %>
+	  </div>
+	</nav>
+
+
+	<div class="row">
+	  <div class="large-10 large-centered columns">
+	  <% flash.each do |name, msg| %>
+		  <% if msg.is_a?(String) %>
+			  <div class="alert-box <%= name == :notice ? "success" : "warning" %>">
+				  <a href="#" class="close">&times;</a>
+				  <%= content_tag :div, msg, :id => "flash_#{name}" %>
+			  </div>
+		  <% end %>
+	  <% end %>
+		  <%= yield %>
+	  </div>
+  </div>
+    <%= javascript_include_tag "application" %>
+  </body>
 </html>

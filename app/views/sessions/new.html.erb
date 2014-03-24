@@ -1,16 +1,25 @@
 
 <%= form_tag sessions_path do %>
-	<div class="field">
-		<%= label_tag :email %>
-		<%= text_field_tag :email, params[:email] %>
+	<div class="row">
+		<div class="large-9 large-centered columns">
+			<%= content_tag :h3, "Impresion de Facturas MKT Street" %>	
+		</div>
 	</div>
+	<div class="row">
+		<div class="large-6 large-centered columns">
+			<%= label_tag :email %>	
+			<%= text_field_tag :email, params[:email] %>
+		</div>
 
-	<div class="field">
-		<%= label_tag :password %>
-		<%= password_field_tag :password %>
-	</div>
 
-	<div class="actions">
-		<%= submit_tag "Ingreso" %>
+		<div class="large-6 large-centered columns">
+			<%= label_tag :password , "Clave" %>
+			<%= password_field_tag :password %>
+		</div>
+
+
+		<div class="large-6 large-centered columns">
+			<%= submit_tag "Ingreso" , class: "button small radius"%>
+		</div>
 	</div>
 <% end %>

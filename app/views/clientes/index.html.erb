@@ -1,13 +1,11 @@
-<h1>Listing clientes</h1>
+<h3>Listado clientes</h3>
+
+<%= link_to 'Nuevo Cliente', new_cliente_path, class: "button small radius" %>
 
 <table>
   <thead>
     <tr>
-      <th>Nombre</th>
-      <th>Direccion</th>
-      <th>Ciudad</th>
-      <th>Giro</th>
-      <th>Rut</th>
+      <th>Cliente</th>
       <th></th>
       <th></th>
       <th></th>
@@ -17,14 +15,9 @@
   <tbody>
     <% @clientes.each do |cliente| %>
       <tr>
-        <td><%= cliente.nombre %></td>
-        <td><%= cliente.direccion %></td>
-        <td><%= cliente.ciudad %></td>
-        <td><%= cliente.giro %></td>
-        <td><%= cliente.rut %></td>
-        <td><%= link_to 'Show', cliente %></td>
-        <td><%= link_to 'Edit', edit_cliente_path(cliente) %></td>
-        <td><%= link_to 'Destroy', cliente, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to cliente.nombre, cliente %></td>
+	<td><%= link_to 'Editar', edit_cliente_path(cliente), class: "button tiny radius success" %></td>
+	<td><%= link_to 'Borrar', cliente, method: :delete, data: { confirm: 'Esta seguro de borrar el cliente?' }, class: "button alert tiny radius"  %></td>
       </tr>
     <% end %>
   </tbody>
@@ -32,4 +25,3 @@
 
 <br>
 
-<%= link_to 'New Cliente', new_cliente_path %>

@@ -1,14 +1,23 @@
 <%= javascript_include_tag params[:controller] %>
 
 <div class="nested-fields" id="nested-f">
-	<%= f.label "Cantidad" %>
-	<%= f.text_field :cantidad %>
+	<div class="row">
+		<div class="small-2 columns">
+			<%= f.text_field :cantidad %>
+		</div>
 
-	<%= f.label "Detalle" %>
-	<%= f.text_field :detalle %>
+		<div class="small-6 columns">
+			<%= f.text_field :detalle %>
+		</div>
 
-	<%= f.label "Precio" %>
-	<%= f.text_field :precio%>
+		<div class="small-2 columns">
+			<%= f.text_field :precio%>
+		</div>
 
-	<%= link_to_remove_association "Borrar item", f %>
+		<div class="small-2 columns">
+			<%= link_to_remove_association "Borrar", f, class: "button alert tiny radius" %>
+		</div>
+	</div>
+	
+
 </div>

@@ -11,27 +11,45 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :nombre %><br>
-    <%= f.text_field :nombre %>
+  <div class="row">
+	  <div class="small-8 columns">
+		  <%= f.label :nombre %><br>
+		  <%= f.text_field :nombre %>
+	  </div>
+
+	  <div class="small-4 columns">
+		  <%= f.label :rut %><br>
+		  <%= f.text_field :rut %>
+	  </div>
+
   </div>
-  <div class="field">
-    <%= f.label :direccion %><br>
-    <%= f.text_area :direccion %>
+
+  <div class="row">
+	  <div class="small-12 columns">
+		  <%= f.label :giro %><br>
+		  <%= f.text_field :giro %>
+	  </div>
+  	
   </div>
-  <div class="field">
-    <%= f.label :ciudad %><br>
-    <%= f.text_field :ciudad %>
+
+  <div class="row">
+	  <div class="small-8 columns">
+		  <%= f.label :direccion %><br>
+		  <%= f.text_field :direccion %>
+	  </div>
+
+	  <div class="small-4 columns">
+			  <%= f.label :ciudad %><br>
+			  <%= f.text_field :ciudad %>
+	  </div>
   </div>
-  <div class="field">
-    <%= f.label :giro %><br>
-    <%= f.text_area :giro %>
-  </div>
-  <div class="field">
-    <%= f.label :rut %><br>
-    <%= f.text_field :rut %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+
+	<div class="row">
+		<div class="small-10 columns">
+		</div>
+		<div class="small-2 columns">
+			<%= f.submit "Guardar Cliente", class: "button small radius" %>
+		</div>
+	</div>
 <% end %>
+
