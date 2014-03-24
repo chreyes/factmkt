@@ -28,6 +28,27 @@
 		  <%= f.date_field :fecha, :value => Date.today %>
 	  </div>
   </div>
+  <div class="row">
+  	<div class="small-3 columns">
+		  <%= f.label :oc, "Orden de Compra" %>
+		  <%= f.text_field :oc %>
+	  </div>
+
+  	<div class="small-3 columns">
+		  <%= f.label :gd, "Guia Despacho" %>
+		  <%= f.text_field :gd %>
+	  </div>
+
+  	<div class="small-3 columns">
+		  <%= f.label :cp, "Condiciones de Pago" %>
+		  <%= f.text_field :cp %>
+	  </div>
+
+  	<div class="small-3 columns">
+		  <%= f.label :vencimiento, "Vencimiento" %>
+		  <%= f.date_field :vencimiento %>
+	  </div>
+  </div>
 
 	<div class="row">
 		<div class="small-2 columns">

@@ -19,12 +19,14 @@ class FacturaPdf < Prawn::Document
 		move_down 18
 		indent(1) do 
 			font "Courier"
-			text "#{@factura.fecha.strftime("%d/%m/%Y")}" + "    "  + "#{@factura.cliente.rut}" + "     " + "#{@factura.cliente.giro}", size: 12, style: :normal 
+			text "#{@factura.fecha.strftime("%d/%m/%Y")}" + "    "  + "#{@factura.cliente.rut}" + "     " + "#{@factura.cliente.giro}" + "                 " + "#{@factura.vencimiento}", size: 12, style: :normal 
+			move_down 15
+			text "#{@factura.oc}" + "    "  + "#{@factura.gd}" + "                                       " + "#{@factura.cp}", size: 12, style: :normal 
 		end
 	end
 
 	def datos_items
-		move_down 76
+		move_down 55
 		indent(15) do
 			table(filas_items, :column_widths => [40,342,68,70], :cell_style => {:border_color => "FFFFFFFF", :padding => 0}) 
 		end

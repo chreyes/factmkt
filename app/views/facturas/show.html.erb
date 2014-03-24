@@ -2,9 +2,18 @@
 
 <%= link_to 'Volver', facturas_path, class: "button small secondary" %>
 <%= link_to "Imprimir", factura_path(@factura, format: "pdf"), class: "button small alert" %>
-
+<div class="panel">
+	
+<div class="row">		
+			<div class="small-3 columns">
+				Cliente:
+			</div>
+			<div class="small-9 columns">
+				<strong><%= @factura.cliente.nombre %></strong>
+			</div>
+</div>
 <div class="row">
-	<div class="small-2 columns">
+	<div class="small-6 columns">
 		<div class="row">
 			<div class="small-6 columns">
 				Numero:
@@ -14,30 +23,71 @@
 			</div>
 		</div>
 	</div>
-
 	<div class="small-6 columns">
 		<div class="row">
-			<div class="small-2 columns">
-				Cliente:
-			</div>
-			<div class="small-10 columns">
-				<strong><%= @factura.cliente.nombre %></strong>
-			</div>
-		</div>
-	</div>
-
-	<div class="small-2 columns">
-		<div class="row">
-			<div class="small-6 columns">
+			<div class="small-5 columns">
 				Fecha:
 			</div>
 
-			<div class="small-6 columns">
+			<div class="small-7 columns">
 				<strong><%= @factura.fecha.strftime("%d/%m/%Y") %></strong>
 			</div>
 		</div>
 	</div>
 </div>
+
+
+<div class="row">
+	<div class="small-6 columns">
+		<div class="row">
+			<div class="small-6 columns">
+				Orden de Compra:
+			</div>
+			<div class="small-6 columns">
+				<strong><%= @factura.oc %></strong>
+			</div>
+		</div>
+	</div>
+
+	<div class="small-6 columns">
+		<div class="row">
+			<div class="small-5 columns">
+				Guia Despacho:
+			</div>
+			<div class="small-7 columns">
+				<strong><%= @factura.gd %></strong>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="row">
+	<div class="small-6 columns">
+		<div class="row">
+			<div class="small-6 columns">
+				Condiciones de Pago:
+			</div>
+
+			<div class="small-6 columns">
+				<strong><%= @factura.cp %></strong>
+			</div>
+		</div>
+	</div>
+
+	<div class="small-6 columns">
+		<div class="row">
+			<div class="small-5 columns">
+				Vencimiento:
+			</div>
+
+			<div class="small-7 columns">
+				<strong><%= @factura.vencimiento.strftime("%d/%m/%Y") %></strong>
+			</div>
+		</div>
+	</div>
+</div>
+</div>
+
 <br />
 <table>
   <thead>
@@ -61,45 +111,39 @@
   </tbody>
 </table>
 
-	<div class="row">
-		<div class="small-8 columns">
-		</div>
+<div class="row">
+	<div class="small-9 columns">
+	</div>
 
-		<div class="small-4 columns">
-			<div class="small-8 columns">
-				<strong>Neto:</strong>
+	<div class="small-3 columns">
+		<div class="panel callout radius">
+			<div class="row">
+				<div class="small-6 columns">
+					Neto:
+				</div>
+				<div class="small-6 columns">
+					<strong><%= formato(@factura.neto.round) %></strong>
+				</div>
 			</div>
-			<div class="small-4 columns">
-				<%= formato(@factura.neto.round) %>
+
+			<div class="row">
+				<div class="small-6 columns">
+					Iva:
+				</div>
+				<div class="small-6 columns">
+					<strong><%= formato(@factura.iva.round) %></strong>
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="small-6 columns">
+					Total:
+				</div>
+				<div class="small-6 columns">
+					<strong><%= formato(@factura.total.round) %></strong>
+				</div>
 			</div>
 		</div>
 	</div>
+</div>
 
-
-	<div class="row">
-		<div class="small-8 columns">
-		</div>
-
-		<div class="small-4 columns">
-			<div class="small-8 columns">
-				<strong>Iva:</strong>
-			</div>
-			<div class="small-4 columns">
-				<%= formato(@factura.iva.round) %>
-			</div>
-		</div>
-	</div>
-
-	<div class="row">
-		<div class="small-8 columns">
-		</div>
-
-		<div class="small-4 columns">
-			<div class="small-8 columns">
-				<strong>Total:</strong>
-			</div>
-			<div class="small-4 columns">
-				<%= formato(@factura.total.round) %>
-			</div>
-		</div>
-	</div>
