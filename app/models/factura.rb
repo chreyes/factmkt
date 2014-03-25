@@ -1,5 +1,6 @@
 class Factura < ActiveRecord::Base
-	validates :numero, presence: true
+	#validates :numero, :uniqueness => true
+	#validates :numero, :numericality => { :greater_than => 0 }
 
 	belongs_to :cliente
 	has_many :items

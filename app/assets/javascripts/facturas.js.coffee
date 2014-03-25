@@ -2,4 +2,11 @@
 # All this logic will automatically be available in application.js.
 # You can use CoffeeScript in this file: http://coffeescript.org/
 jQuery ->
+  $("#fact").dynatable(
+    table: 
+      defaultColumnIdStyle: 'underscore'
+
+    features:
+      perPageSelect: false)
+
   $('#nested-f').add("p")

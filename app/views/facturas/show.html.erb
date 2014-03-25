@@ -1,7 +1,8 @@
-<p id="notice"><%= notice %></p>
+<p></p>
 
 <%= link_to 'Volver', facturas_path, class: "button small secondary" %>
 <%= link_to "Imprimir", factura_path(@factura, format: "pdf"), class: "button small alert" %>
+
 <div class="panel">
 	
 <div class="row">		
@@ -81,7 +82,7 @@
 			</div>
 
 			<div class="small-7 columns">
-				<strong><%= @factura.vencimiento.strftime("%d/%m/%Y") %></strong>
+				<strong><%= @factura.vencimiento %></strong>
 			</div>
 		</div>
 	</div>

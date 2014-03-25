@@ -2,11 +2,10 @@
 
 <%= link_to 'Nuevo Cliente', new_cliente_path, class: "button small radius" %>
 
-<table>
+<table id="clientes">
   <thead>
     <tr>
       <th>Cliente</th>
-      <th></th>
       <th></th>
       <th></th>
     </tr>
@@ -15,8 +14,8 @@
   <tbody>
     <% @clientes.each do |cliente| %>
       <tr>
-        <td><%= link_to cliente.nombre, cliente %></td>
-	<td><%= link_to 'Editar', edit_cliente_path(cliente), class: "button tiny radius success" %></td>
+        <td><%= link_to cliente.nombre, cliente, class: "button tiny radius success" %></td>
+	<td><%= link_to 'Editar', edit_cliente_path(cliente), class: "button tiny radius secondary" %></td>
 	<td><%= link_to 'Borrar', cliente, method: :delete, data: { confirm: 'Esta seguro de borrar el cliente?' }, class: "button alert tiny radius"  %></td>
       </tr>
     <% end %>
