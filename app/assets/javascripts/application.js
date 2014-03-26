@@ -13,6 +13,7 @@
 //= require jquery
 //= require jquery_ujs
 //= require foundation
+//= require foundation-datepicker
 //= require turbolinks
 //= require cocoon 
 //= require jquery.dynatable 

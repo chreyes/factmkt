@@ -1,5 +1,5 @@
 class Factura < ActiveRecord::Base
-	#validates :numero, :uniqueness => true
+	validates :numero, presence: true
 	#validates :numero, :numericality => { :greater_than => 0 }
 
 	belongs_to :cliente
@@ -19,5 +19,9 @@ class Factura < ActiveRecord::Base
 
 	def total
 		neto + iva
+	end
+
+	def tp
+		I18n.with_locale(:es) {self.total.round.to_words.capitalize}
 	end
 end

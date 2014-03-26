@@ -18,7 +18,7 @@ class FacturasController < ApplicationController
 			 pdf = FacturaPdf.new(@factura, view_context)
 			 send_data pdf.render, filename: "#{@factura.numero}",
 			 			type: "application/pdf",
-						disposition: "inline"
+						disposition: "attachment"
 		 end
 	  end		 
   end
@@ -55,7 +55,7 @@ class FacturasController < ApplicationController
   def update
     respond_to do |format|
       if @factura.update(factura_params)
-        format.html { redirect_to facturas_url, notice: 'Factura editada exitosamente.' }
+        format.html { redirect_to @facturas, notice: 'Factura editada exitosamente.' }
         format.json { head :no_content }
       else
         format.html { render action: 'edit' }

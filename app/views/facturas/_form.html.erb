@@ -1,6 +1,6 @@
 <%= javascript_include_tag params[:controller] %>
 
-<%= form_for(@factura) do |f| %>
+<%= form_for(@factura, data: {abide:""}) do |f| %>
   <% if @factura.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@factura.errors.count, "error") %> prohibited this factura from being saved:</h2>
@@ -15,17 +15,18 @@
   <div class="row">
 	  <div class="small-2 columns">
 		  <%= f.label :numero %>
-		  <%= f.text_field :numero %>
+		  <%= f.text_field :numero, placeholder: 'Numero', required:'' %>
+		  <%= content_tag(:small, "Numero requerido", class: "error") %>
 	  </div>
 	  
 	  <div class="small-6 columns">
 		  <%= f.label :cliente %>
-		  <%= f.collection_select :cliente_id, @clientes, :id, :nombre %>
+		  <%= f.collection_select :cliente_id, Cliente.all, :id, :nombre %>
 	  </div>
 
 	  <div class="small-4 columns">
 		  <%= f.label :fecha %>
-		  <%= f.date_field :fecha, :value => Date.today %>
+		  <%= f.text_field :fecha, class: "dtp", value: Date.today.strftime("%d/%m/%Y")  %>
 	  </div>
   </div>
   <div class="row">
@@ -46,23 +47,14 @@
 
   	<div class="small-3 columns">
 		  <%= f.label :vencimiento, "Vencimiento" %>
-		  <%= f.date_field :vencimiento %>
+		  <%= f.text_field :vencimiento, class: "dtp"  %>
 	  </div>
   </div>
 
 	<div class="row">
-		<div class="small-2 columns">
-			<%= f.label "Cantidad" %>
+		<div class="small-12 columns">
+			<%= content_tag :h4, "" %>
 		</div>
-
-		<div class="small-4 columns">
-			<%= f.label "Detalle" %>
-		</div>
-
-		<div class="small-4 columns">
-			<%= f.label "Precio" %>
-		</div>
-
 	</div>
 
 
@@ -73,52 +65,6 @@
 		<%= link_to_add_association 'Agregar item', f, :items, class: "button tiny success radius" %>
 	</div>
 
-
-	<div class="row">
-		<div class="small-8 columns">
-			<%= content_tag :h3, " " %>
-		</div>
-
-		<div class="small-2 columns">
-			Neto:
-		</div>
-		<div class="small-2 columns">
-			<%= formato(@factura.neto.round) %>
-		</div>
-	</div>
-
-	<div class="row">
-		<div class="small-8 columns">
-			<%= content_tag :h3, " " %>
-		</div>
-
-		<div class="small-2 columns">
-			Iva:
-		</div>
-		<div class="small-2 columns">
-			<%= formato(@factura.iva.round) %>
-		</div>
-	</div>
-
-	<div class="row">
-		<div class="small-8 columns">
-			<%= content_tag :h3, " " %>
-		</div>
-
-		<div class="small-2 columns">
-			Total:
-		</div>
-		<div class="small-2 columns">
-			<%= formato(@factura.total.round) %>
-		</div>
-	</div>
-
-	<div class="row">
-		<div class="small-2 columns">
-			<%= content_tag :h3, " " %>
-		</div>
-		
-	</div>
 
 	<div class="row">
 		<div class="small-6 columns">

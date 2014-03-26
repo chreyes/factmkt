@@ -9,4 +9,5 @@ jQuery ->
     features:
       perPageSelect: false)
 
-  $('#nested-f').add("p")
+  $('.dtp').fdatepicker(
+    format: 'dd/mm/yyyy')

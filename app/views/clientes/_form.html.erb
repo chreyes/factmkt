@@ -1,4 +1,4 @@
-<%= form_for(@cliente) do |f| %>
+<%= form_for(@cliente, data: {abide:""}) do |f| %>
   <% if @cliente.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@cliente.errors.count, "error") %> prohibited this cliente from being saved:</h2>
@@ -14,12 +14,14 @@
   <div class="row">
 	  <div class="small-8 columns">
 		  <%= f.label :nombre %><br>
-		  <%= f.text_field :nombre %>
+		  <%= f.text_field :nombre, placeholder: 'Nombre', required:'' %>
+		  <%= content_tag(:small, "Nombre requerido", class: "error") %>
 	  </div>
 
 	  <div class="small-4 columns">
 		  <%= f.label :rut %><br>
-		  <%= f.text_field :rut %>
+		  <%= f.text_field :rut, placeholder: 'Rut', required:'' %>
+		  <%= content_tag(:small, "Rut requerido", class: "error") %>
 	  </div>
 
   </div>
@@ -27,7 +29,8 @@
   <div class="row">
 	  <div class="small-12 columns">
 		  <%= f.label :giro %><br>
-		  <%= f.text_field :giro %>
+		  <%= f.text_field :giro, placeholder: 'Giro', required:'' %>
+		  <%= content_tag(:small, "Giro requerido", class: "error") %>
 	  </div>
   	
   </div>
@@ -35,12 +38,14 @@
   <div class="row">
 	  <div class="small-8 columns">
 		  <%= f.label :direccion %><br>
-		  <%= f.text_field :direccion %>
+		  <%= f.text_field :direccion, placeholder: 'Dirección', required:'' %>
+		  <%= content_tag(:small, "Dirección requerido", class: "error") %>
 	  </div>
 
 	  <div class="small-4 columns">
-			  <%= f.label :ciudad %><br>
-			  <%= f.text_field :ciudad %>
+		  <%= f.label :ciudad %><br>
+		  <%= f.text_field :ciudad, placeholder: 'Ciudad', required:'' %>
+		  <%= content_tag(:small, "Ciudad requerida", class: "error") %>
 	  </div>
   </div>
 

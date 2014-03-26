@@ -3,15 +3,18 @@
 <div class="nested-fields" id="nested-f">
 	<div class="row">
 		<div class="small-2 columns">
-			<%= f.text_field :cantidad %>
+		  <%= f.text_field :cantidad, placeholder: 'Cantidad', required:'' %>
+		  <%= content_tag(:small, "Cantidad requerida", class: "error") %>
 		</div>
 
 		<div class="small-6 columns">
-			<%= f.text_field :detalle %>
+		  <%= f.text_field :detalle, placeholder: 'Detalle', required:'' %>
+		  <%= content_tag(:small, "Detalle requerido", class: "error") %>
 		</div>
 
 		<div class="small-2 columns">
-			<%= f.text_field :precio%>
+		  <%= f.text_field :precio, placeholder: 'Precio', required:'' %>
+		  <%= content_tag(:small, "Precio requerido", class: "error") %>
 		</div>
 
 		<div class="small-2 columns">

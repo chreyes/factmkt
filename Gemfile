@@ -53,3 +53,5 @@ gem 'bcrypt-ruby'
 gem 'foundation-rails'
 
 gem 'rut_chileno'
+
+gem 'numbers_and_words'

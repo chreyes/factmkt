@@ -59,6 +59,9 @@ GEM
     mime-types (1.25.1)
     minitest (4.7.5)
     multi_json (1.9.2)
+    numbers_and_words (0.10.0)
+      activesupport
+      i18n
     pdf-core (0.2.5)
     polyglot (0.3.4)
     prawn (1.0.0)
@@ -128,6 +131,7 @@ DEPENDENCIES
   foundation-rails
   jbuilder (~> 1.2)
   jquery-rails
+  numbers_and_words
   prawn
   rails (= 4.0.2)
   rut_chileno
